@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from "@material-ui/core";
 
-function App() {
+import WindowScreen from "./pages/WindowScreen";
+import theme from "./theme";
+
+import "./App.css";
+
+const Providers = ({ children }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      {children}
+    </ThemeProvider>
   );
-}
+};
+
+const App = () => {
+  return (
+    <Providers>
+      <div className="App">
+        <header></header>
+        <main>
+          <WindowScreen />
+        </main>
+        <footer></footer>
+      </div>
+    </Providers>
+  );
+};
 
 export default App;
